@@ -1,4 +1,4 @@
-// String firstname, 
+// String firstname,
 // String lastname,
 // String email,
 // String telephone,
@@ -40,17 +40,42 @@ public class Person {
 
     }
 
-    public Person(String firstname, String lastname, String email, String telephone, Date hireDate, boolean active) {
+    public Person(String firstname, String lastname, String email, String telephone,
+            boolean active) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.telephone = telephone;
-        this.hireDate = hireDate;
+        // this.hireDate = hireDate;
         this.active = active;
     }
 
     public long getId() {
         return id;
+    }
+
+    public String getFirstName() {
+        return firstname;
+    }
+
+    public void setFirstName(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastName() {
+        return lastname;
+    }
+
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -65,13 +90,17 @@ public class Person {
         return active;
     }
 
-    public void setPersonStatus() {
-        this.active = !this.active;
+    public void setPersonStatus(boolean isActive) {
+        this.active = isActive;
     }
+    // TODO:
+    // ADD HIREDATE FUNCTIONS
+
 
     @Override
     public String toString() {
-        return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", active=" + active + "]";
+        return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
+                + ", active=" + active + "]";
     }
 
 }

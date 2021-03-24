@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "persons")
+@Table(name = "people")
 public class Person {
 
     @Id
@@ -54,19 +54,19 @@ public class Person {
         return id;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstName(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastname;
     }
 
-    public void setLastName(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
@@ -97,10 +97,10 @@ public class Person {
     // ADD HIREDATE FUNCTIONS
 
 
-    @Override
-    public String toString() {
-        return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
-                + ", active=" + active + "]";
-    }
+    // @Override
+    // public String toString() {
+    //     return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
+    //             + ", active=" + active + "]";
+    // }
 
 }

@@ -3,7 +3,6 @@ package com.reactproject.tutorialproject.controller;
 import com.reactproject.tutorialproject.model.Person;
 import com.reactproject.tutorialproject.repository.TutorialprojectRepository;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +38,7 @@ public class PersonController {
       if (firstname == null) {
         tutorialprojectRepository.findAll().forEach(people::add);
       } else {
-        tutorialprojectRepository.findByFirstnameCointaining(firstname).forEach(people::add);
+        tutorialprojectRepository.findByFirstnameContaining(firstname).forEach(people::add);
       }
 
       if (people.isEmpty()) {
@@ -52,77 +51,77 @@ public class PersonController {
     }
   }
 
-  @GetMapping("/people/{id}")
-  public ResponseEntity<Person> getPersonById(@PathVariable("id") long id) {
-    Optional<Person> personData = tutorialprojectRepository.findById(id);
+  // @GetMapping("/people/{id}")
+  // public ResponseEntity<Person> getPersonById(@PathVariable("id") long id) {
+  // Optional<Person> personData = tutorialprojectRepository.findById(id);
 
-    if (personData.isPresent()) {
-      return new ResponseEntity<>(personData.get(), HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
+  // if (personData.isPresent()) {
+  // return new ResponseEntity<>(personData.get(), HttpStatus.OK);
+  // } else {
+  // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+  // }
+  // }
 
   @PostMapping("/people")
   public ResponseEntity<Person> createPerson(@RequestBody Person person) {
     try {
-      Person _person = tutorialprojectRepository
-          .save(new Person(person.getFirstName(), person.getLastName(), person.getEmail(), person.getTelephone(), false));
+      Person _person = tutorialprojectRepository.save(new Person(person.getFirstname(),
+          person.getLastname(), person.getEmail(), person.getTelephone(), false));
       return new ResponseEntity<>(_person, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
     }
   }
 
-  @PutMapping("/people/{id}")
-  public ResponseEntity<Person> updateTutorial(@PathVariable("id") long id,
-      @RequestBody Person person) {
-    Optional<Person> personData = tutorialprojectRepository.findById(id);
+  // @PutMapping("/people/{id}")
+  // public ResponseEntity<Person> updateTutorial(@PathVariable("id") long id,
+  // @RequestBody Person person) {
+  // Optional<Person> personData = tutorialprojectRepository.findById(id);
 
-    if (personData.isPresent()) {
-      Person _person = personData.get();
-      _person.setFirstName(person.getFirstName());
-      _person.setLastName(person.getLastName());
-      _person.setPersonStatus(person.isActive());
-      return new ResponseEntity<>(tutorialprojectRepository.save(_person), HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
+  // if (personData.isPresent()) {
+  // Person _person = personData.get();
+  // _person.setFirstName(person.getFirstName());
+  // _person.setLastName(person.getLastName());
+  // _person.setPersonStatus(person.isActive());
+  // return new ResponseEntity<>(tutorialprojectRepository.save(_person), HttpStatus.OK);
+  // } else {
+  // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+  // }
+  // }
 
-  @DeleteMapping("/people/{id}")
-  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
-    try {
-      tutorialprojectRepository.deleteById(id);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-    }
-  }
+  // @DeleteMapping("/people/{id}")
+  // public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+  // try {
+  // tutorialprojectRepository.deleteById(id);
+  // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+  // }
+  // }
 
-  @DeleteMapping("/people")
-  public ResponseEntity<HttpStatus> deleteAllTutorials() {
-    try {
-      tutorialprojectRepository.deleteAll();
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-    }
+  // @DeleteMapping("/people")
+  // public ResponseEntity<HttpStatus> deleteAllTutorials() {
+  // try {
+  // tutorialprojectRepository.deleteAll();
+  // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+  // }
 
-  }
+  // }
 
-  @GetMapping("/people/isactive")
-  public ResponseEntity<List<Person>> findByActive() {
-    try {
-      List<Person> people = tutorialprojectRepository.findByActive(true);
+  // @GetMapping("/people/isactive")
+  // public ResponseEntity<List<Person>> findByActive() {
+  // try {
+  // List<Person> people = tutorialprojectRepository.findByActive(true);
 
-      if (people.isEmpty()) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-      }
-      return new ResponseEntity<>(people, HttpStatus.OK);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-    }
-  }
+  // if (people.isEmpty()) {
+  // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  // }
+  // return new ResponseEntity<>(people, HttpStatus.OK);
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+  // }
+  // }
 
 }

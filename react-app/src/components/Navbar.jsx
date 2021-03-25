@@ -4,7 +4,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap'
 const Navbar = () => {
   return (
     <>
-      <Nav className="bg-dark">
+      <Nav className="navbar">
         <NavItem>
           <NavLink href="#">Add</NavLink>
         </NavItem>

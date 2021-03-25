@@ -10,9 +10,9 @@ const EmployeeListContainer = () => {
     setEmployees(result.data)
   }, [apiDataService.getAll])
 
-  console.log(employees)
+  //   console.log(employees)
   return (
-    <EmployeeList />
+    <EmployeeList employees={employees}/>
   )
 }
 

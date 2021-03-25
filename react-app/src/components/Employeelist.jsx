@@ -1,19 +1,50 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap'
+import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card, Container, Row, Col  } from 'reactstrap'
 
-const EmployeeList = () => (
-  <ListGroup>
-    <ListGroupItem id="toggler">
-        Employee:  Active: 
-    </ListGroupItem>
-    <UncontrolledCollapse toggler="#toggler">
-      <Card>
-        <CardBody>
-          <Button>Edit info</Button>
-        </CardBody>
-      </Card>
-    </UncontrolledCollapse>
-  </ListGroup>
-)
+const EmployeeList = ({ employees }) => {
+  return (
+    <ListGroup>
+      {employees.map((employee, index) => (
+        <div key={employee.id}>
+          <ListGroupItem id={`listToggler-${index}`}>
+              Employee: {employee.firstname} Active: {employee.active}
+          </ListGroupItem>
+          <UncontrolledCollapse toggler={`listToggler-${index}`}>
+            <Card>
+              <CardBody>
+                <Container>
+                  <Row>
+                      Employee: {employee.firstname} {employee.lastname}
+                  </Row>
+                  <Row>
+                      Telephone: {employee.telephone}
+                  </Row>
+                  <Row>
+                      Email: {employee.email}
+                  </Row>
+                  <Row>
+                      Hired on: 
+                  </Row>
+                  <Row>
+                      Active: {employee.active ? 'Active' : 'Not Active'}
+                  </Row>
+                  <Row>
+                    <Col lg={{ size: 12, offset: 5}}>
+                      <Button>Edit info</Button>
+                    </Col>
+                  </Row>
+                </Container>
+              </CardBody>
+            </Card>
+          </UncontrolledCollapse>
+        </div>
+      ))}
+    </ListGroup>)
+}
+
+EmployeeList.propTypes = {
+  employees: PropTypes.array.isRequired,
+}
 
 export default EmployeeList

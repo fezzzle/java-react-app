@@ -8,6 +8,7 @@
 package com.reactproject.tutorialproject.model;
 
 import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
@@ -30,6 +31,7 @@ public class Person {
     @Column(name = "telephone")
     private String telephone;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "hireDate")
     private Date hireDate;
 
@@ -41,12 +43,12 @@ public class Person {
     }
 
     public Person(String firstname, String lastname, String email, String telephone,
-            boolean active) {
+            Date hireDate, boolean active) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.telephone = telephone;
-        // this.hireDate = hireDate;
+        this.hireDate = hireDate;
         this.active = active;
     }
 
@@ -86,6 +88,10 @@ public class Person {
         this.email = email;
     }
 
+    public Date getHireDate() {
+        return hireDate;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -99,8 +105,8 @@ public class Person {
 
     // @Override
     // public String toString() {
-    //     return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
-    //             + ", active=" + active + "]";
+    // return "Person [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname
+    // + ", active=" + active + "]";
     // }
 
 }

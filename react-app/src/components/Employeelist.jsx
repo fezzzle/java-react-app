@@ -25,7 +25,7 @@ const EmployeeList = ({ employees }) => {
                       Email: {employee.email}
                   </Row>
                   <Row>
-                      Hired on: 
+                      Hired on: {employee.hireDate}
                   </Row>
                   <Row>
                       Active: {employee.active ? 'Active' : 'Not Active'}

@@ -1,16 +1,26 @@
 import React from 'react'
 import { AddEmployee } from '../components/'
-// import create from '../services/api-service'
+import apiDataService from '../services/api-service'
+// import axios from 'axios'
 
 const AddEmployeeContainer = () => {
 
-
-
   const onSubmit = (e) => {
-
-    const { firstname, lastname, email, telephone, hireDate } = e.target.elements
-    console.log({firstname: firstname.value, lastname: lastname.value, email: email.value, telephone: telephone.value, hireDate: hireDate.value})
     e.preventDefault()
+    const { firstname, lastname, email, telephone, hireDate} = e.target.elements
+    console.log(hireDate.value)
+    
+    apiDataService.create(
+      {
+        firstname: firstname.value, 
+        lastname: lastname.value, 
+        email: email.value, 
+        telephone: telephone.value,
+        hireDate: hireDate.value,
+        active: true
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
   return (

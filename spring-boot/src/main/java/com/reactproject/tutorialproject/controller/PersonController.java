@@ -66,7 +66,7 @@ public class PersonController {
   public ResponseEntity<Person> createPerson(@RequestBody Person person) {
     try {
       Person _person = tutorialprojectRepository.save(new Person(person.getFirstname(),
-          person.getLastname(), person.getEmail(), person.getTelephone(), false));
+          person.getLastname(), person.getEmail(), person.getTelephone(), person.getHireDate(), true));
       return new ResponseEntity<>(_person, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);

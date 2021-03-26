@@ -4,15 +4,22 @@ import apiDataService from '../services/api-service'
 
 const EmployeeListContainer = () => {
   const [employees, setEmployees] = useState([])
+  
+  const deleteRecords = () => {
+    apiDataService
+      .deleteAll()
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
 
   useEffect(async () => {
     const result = await apiDataService.getAll()
     setEmployees(result.data)
   }, [apiDataService.getAll])
 
-  //   console.log(employees)
+  console.log(employees)
   return (
-    <EmployeeList employees={employees}/>
+    <EmployeeList employees={employees} deleteRecords={deleteRecords}/>
   )
 }
 

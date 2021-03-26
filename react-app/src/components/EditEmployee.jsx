@@ -18,3 +18,12 @@ const EditEmployee = () => {
 }
 
 export default EditEmployee
+
+
+
+//       <FormGroup check>
+{/* <Label check> */}
+{/* <Input type="checkbox" /> */}
+{/* employed? */}
+{/* </Label> */}
+// </FormGroup>

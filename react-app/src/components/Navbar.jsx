@@ -1,18 +1,19 @@
 import React from 'react'
-import { Nav, NavItem, NavLink } from 'reactstrap'
+import { Navbar as BaseNavbar, Nav, NavItem, NavLink } from 'reactstrap'
+import { NavLink as RRNavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <>
+    <BaseNavbar>
       <Nav className="navbar">
         <NavItem>
-          <NavLink href="#">Add</NavLink>
+          <NavLink tag={RRNavLink} to="/addemployee" exact>Add</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#">Employees</NavLink>
+          <NavLink tag={RRNavLink} to="/employees" exact>Employees</NavLink>
         </NavItem>
       </Nav>
-    </>
+    </BaseNavbar>
   )
 }
 

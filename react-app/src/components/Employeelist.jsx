@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card, Container, Row, Col  } from 'reactstrap'
+import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card, Container, Row, Col, NavLink  } from 'reactstrap'
+import { NavLink as RRNavLink } from 'react-router-dom'
 
 const EmployeeList = ({ employees }) => {
   return (
@@ -31,7 +32,9 @@ const EmployeeList = ({ employees }) => {
                   </Row>
                   <Row>
                     <Col lg={{ size: 12, offset: 5}}>
-                      <Button>Edit info</Button>
+                      <NavLink tag={RRNavLink} to="/editemployee" exact>
+                        <Button>Edit info</Button>
+                      </NavLink>
                     </Col>
                   </Row>
                 </Container>

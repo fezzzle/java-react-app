@@ -1,11 +1,15 @@
 import React from 'react'
-import { Navbar, Pagebody } from './components/'
+import { Navbar } from './components/'
+import { EmployeeListContainer, AddEmployeeContainer, EditEmployeeContainer } from './containers/'
+import { Route } from 'react-router-dom'
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <Pagebody />
+      <Route exact path={['/', '/employees']} component={EmployeeListContainer} />
+      <Route exact path="/editemployee" component={EditEmployeeContainer} />
+      <Route path="/addemployee" component={AddEmployeeContainer} />
     </>
   )
 }

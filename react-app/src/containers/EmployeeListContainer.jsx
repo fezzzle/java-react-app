@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { EmployeeList } from '../components'
 import apiDataService from '../services/api-service'
-import { IsLoadingActionsContext } from '../IsLoadingContext'
+import { useIsLoadingActionsContext } from '../IsLoadingContext'
+import GlobalSpinner from '../components/GlobalSpinner/GlobalSpinner'
 
 const EmployeeListContainer = () => {
-  const [employees, setEmployees] = useState([])
-  const setIsLoading = useContext(IsLoadingActionsContext)
+  const [employees, setEmployees] = useState()
+  const setIsLoading = useIsLoadingActionsContext()
   
   const deleteRecords = () => {
     apiDataService
@@ -16,22 +17,21 @@ const EmployeeListContainer = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    apiDataService.getAll()
-      .then(res => {
-        setInterval(() => {
-          setEmployees(res.data)
-          setIsLoading(false)
-        }, 4000)
-      })
-      .catch(err => {console.log(err)})
+    setTimeout(() => {
+      apiDataService
+        .getAll()
+        .then(res => setEmployees(res.data))
+        .catch(err => {console.log(err)})
+    }, 1000)
+    setIsLoading(false)
   }, [setIsLoading])
 
-  console.log(employees)
   return (
     <>
-      <EmployeeList employees={employees} deleteRecords={deleteRecords}/>
+      {employees ? (<EmployeeList employees={employees} deleteRecords={deleteRecords}/>) : (<GlobalSpinner />)}
     </>
   )
 }
+
 
 export default EmployeeListContainer

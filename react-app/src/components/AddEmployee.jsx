@@ -25,8 +25,8 @@ const AddEmployee = (props) => {
           </FormGroup>
           <FormGroup>
             <Input name="phone" id="telephone" placeholder="+372530000" required/>
-            <FormGroup>
-            </FormGroup>
+          </FormGroup>
+          <FormGroup>
             <Label for="exampleDate">Date hired</Label>
             <Input
               type="date"

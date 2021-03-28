@@ -1,29 +1,59 @@
+import propTypes from 'prop-types'
 import React from 'react'
-import { Jumbotron, Button } from 'reactstrap'
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
+// const EditEmployee = ({ employee }) => {
 const EditEmployee = () => {
   return (
-    <div>
-      <Jumbotron>
-        <h1 className="display-3">Hello, world!</h1>
-        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr className="my-2" />
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p className="lead">
-          <Button color="primary">Learn More</Button>
-        </p>
-      </Jumbotron>
-    </div>
+    <Form>
+      <h1>Edit Employee Data</h1>
+      <Row form>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="firstname">firstname</Label>
+            <Input type="text" name="firstname" id="firstname" placeholder="firstname" />
+          </FormGroup>
+        </Col>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="lastname">lastname</Label>
+            <Input type="text" name="lastname" id="lastname" placeholder="EmployeeLastname" />
+          </FormGroup>
+        </Col>
+      </Row>
+      <FormGroup>
+        <Label for="exampleEmail">Email</Label>
+        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="telephone">Telephone</Label>
+        <Input type="text" name="telephone" id="telephone" placeholder="+37253000232"/>
+      </FormGroup>
+      <Row form>
+        <FormGroup>
+          <Label for="exampleDate">Date hired</Label>
+          <Input
+            type="date"
+            name="date"
+            id="hireDate"
+            placeholder="date placeholder"
+            required
+          />
+        </FormGroup>
+      </Row>
+      <FormGroup check>
+        <Label check>
+          <Input type="checkbox" />
+          employed?
+        </Label>
+      </FormGroup>
+      <Button>Save Employ Info</Button>
+    </Form>
   )
 }
 
+EditEmployee.propTypes = {
+  employee: propTypes.object.isRequired
+}
+
 export default EditEmployee
-
-
-
-//       <FormGroup check>
-{/* <Label check> */}
-{/* <Input type="checkbox" /> */}
-{/* employed? */}
-{/* </Label> */}
-// </FormGroup>

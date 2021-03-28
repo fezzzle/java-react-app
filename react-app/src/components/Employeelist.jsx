@@ -4,14 +4,13 @@ import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card,
 import { NavLink as RRNavLink } from 'react-router-dom'
 
 const EmployeeList = ({ employees, deleteRecords }) => {
-  console.log('employees are: ', typeof employees)
   return (
     <Container>
       <ListGroup>
         {employees && employees.map((employee, index) => (
           <div key={employee.id}>
             <ListGroupItem id={`listToggler-${index}`}>
-                Employee: {employee.firstname} Active: {employee.active ? 'Active': 'Not Active'}
+                Employee: {employee.firstname} {employee.firstname} Active: {employee.active ? 'Active': 'Not Active'}
             </ListGroupItem>
             <UncontrolledCollapse toggler={`listToggler-${index}`}>
               <Card>
@@ -34,7 +33,7 @@ const EmployeeList = ({ employees, deleteRecords }) => {
                     </Row>
                     <Row>
                       <Col lg={{ size: 12, offset: 5}}>
-                        <NavLink tag={RRNavLink} to="/editemployee" exact>
+                        <NavLink tag={RRNavLink} to={`editemployee/${employee.id}`} exact>
                           <Button>Edit info</Button>
                         </NavLink>
                       </Col>
@@ -44,14 +43,14 @@ const EmployeeList = ({ employees, deleteRecords }) => {
               </Card>
             </UncontrolledCollapse>
           </div>
-        ))}
-        
+        ))
+        }     
+        <Row>
+          <Col lg={{size: 12, offset: 5}} style={{marginTop: '1rem'}}>
+            <Button onClick={deleteRecords}>Delete all records</Button>
+          </Col>
+        </Row>   
       </ListGroup>
-      <Row>
-        <Col lg={{size: 12, offset: 5}} style={{marginTop: '1rem'}}>
-          <Button onClick={deleteRecords}>Delete all records</Button>
-        </Col>
-      </Row>
     </Container>
   )
 }

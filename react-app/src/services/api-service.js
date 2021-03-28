@@ -1,6 +1,6 @@
 import http from './http-axios'
 
-class apilDataService {
+class apiDataService {
   getAll() {
     return http.get('/people')
   }
@@ -30,4 +30,4 @@ class apilDataService {
   }
 }
   
-export default new apilDataService()
+export default new apiDataService()

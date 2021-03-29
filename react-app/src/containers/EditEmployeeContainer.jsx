@@ -30,14 +30,14 @@ const EditEmployeeContainer = (props) => {
   useEffect(() => {
     setIsLoading(true)
     // Just for testing if spinner works
-    setTimeout(() => {
-      apiDataService
-        .get(props.match.params.id)
-        .then(res => {
-          console.log(res.data)
-          setEmployee(res.data)})
-        .catch(err => console.log(err))
-    }, 1000)
+    // setTimeout(() => {
+    apiDataService
+      .get(props.match.params.id)
+      .then(res => {
+        console.log(res.data)
+        setEmployee(res.data)})
+      .catch(err => console.log(err))
+    // }, 1000)
     setIsLoading(false)
   }, [setIsLoading])
 

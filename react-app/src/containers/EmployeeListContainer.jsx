@@ -18,12 +18,12 @@ const EmployeeListContainer = () => {
   useEffect(() => {
     setIsLoading(true)
     // Just for testing if spinner works
-    setTimeout(() => {
-      apiDataService
-        .getAll()
-        .then(res => setEmployees(res.data))
-        .catch(err => {console.log(err)})
-    }, 1000)
+    // setTimeout(() => {
+    apiDataService
+      .getAll()
+      .then(res => setEmployees(res.data))
+      .catch(err => {console.log(err)})
+    // }, 1000)
     setIsLoading(false)
   }, [setIsLoading])
 

@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card, Container, Row, Col, NavLink  } from 'reactstrap'
 import { NavLink as RRNavLink } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faUser, faPhone, faSquare, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const EmployeeList = ({ employees, deleteRecords }) => {
   return (
@@ -12,20 +15,59 @@ const EmployeeList = ({ employees, deleteRecords }) => {
           {employees && employees.map((employee, index) => (
             <div key={employee.id}>
               <ListGroupItem id={`listToggler-${index}`}>
-                Employee: {employee.firstname} {employee.lastname} Active: {employee.active ? 'Active': 'Not Active'}
+                <Row>
+                  <Col>
+                    <span className="fa-layers fa-2x">
+                      <FontAwesomeIcon icon={faSquare} color="green"/>
+                      <FontAwesomeIcon icon={faUser} inverse transform="shrink-6"/>
+                    </span>
+                    {employee.firstname} {employee.lastname}
+                  </Col>
+                Is employee still active? 
+                  <Col>
+                    {
+                      employee.active 
+                        ? 
+                        <span className="fa-layers fa-2x">
+                          <FontAwesomeIcon icon={faSquare} color="green"/>
+                          <FontAwesomeIcon icon={faCheck} inverse transform="shrink-6"/>
+                        </span>
+                        : 
+                        <span className="fa-layers fa-2x">
+                          <FontAwesomeIcon icon={faSquare} color="red"/>
+                          <FontAwesomeIcon icon={faTimes} inverse transform="shrink-6"/>
+                        </span>
+                    }
+                  </Col>
+                </Row>
               </ListGroupItem>
               <UncontrolledCollapse toggler={`listToggler-${index}`}>
                 <Card>
                   <CardBody>
                     <Container>
                       <Row>
-                        Employee: {employee.firstname} {employee.lastname}
+                        <span className="fa-layers fa-2x">
+                          <FontAwesomeIcon icon={faSquare} color="green"/>
+                          <FontAwesomeIcon icon={faUser} inverse transform="shrink-6"/>
+                        </span>
+                        &nbsp;
+                        {employee.firstname} {employee.lastname}
                       </Row>
                       <Row>
-                        Telephone: {employee.telephone}
+                        <span className="fa-layers fa-2x">
+                          <FontAwesomeIcon icon={faSquare} color="green"/>
+                          <FontAwesomeIcon icon={faPhone} inverse transform="shrink-6"/>
+                        </span>
+                        &nbsp;
+                        {employee.telephone}
                       </Row>
                       <Row>
-                        Email: {employee.email}
+                        <span className="fa-layers fa-2x">
+                          <FontAwesomeIcon icon={faSquare} color="green"/>
+                          <FontAwesomeIcon icon={faEnvelope} inverse transform="shrink-6"/>
+                        </span>
+                        &nbsp;
+                        {employee.email}
                       </Row>
                       <Row>
                         Hired on: {employee.hireDate}

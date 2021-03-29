@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Container, Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
 const AddEmployee = (props) => {
   const [submitted, setSubmitted] = useState(false)
@@ -11,7 +11,7 @@ const AddEmployee = (props) => {
   }
 
   return (
-    <>
+    <Container>
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
@@ -44,7 +44,7 @@ const AddEmployee = (props) => {
           <Button>Submit</Button>
         </Form>
       )}
-    </>
+    </Container>
   )
 }
 

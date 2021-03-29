@@ -9,18 +9,16 @@ const EditEmployeeContainer = (props) => {
   const [employee, setEmployee] = useState()
   const setIsLoading = useIsLoadingActionsContext()
 
-  const onSubmit = (e, hireDate, checked) => {
+  const onSubmit = (e, firstname, lastname, telephone, hireDate, checked) => {
     e.preventDefault()
-    const { firstname, lastname, email, telephone } = e.target.elements
-    // console.log(firstname.value, lastname.value, email.value, telephone.value, hireDate, checked)
-    console.log('hireDate is: ', hireDate)
+    const { email } = e.target.elements
 
     apiDataService
       .update(employee.id, {
-        firstname: firstname.value, 
-        lastname: lastname.value, 
+        firstname: firstname, 
+        lastname: lastname, 
         email: email.value, 
-        telephone: telephone.value, 
+        telephone: telephone, 
         hireDate: hireDate, 
         active: checked
       })
@@ -31,6 +29,7 @@ const EditEmployeeContainer = (props) => {
 
   useEffect(() => {
     setIsLoading(true)
+    // Just for testing if spinner works
     setTimeout(() => {
       apiDataService
         .get(props.match.params.id)

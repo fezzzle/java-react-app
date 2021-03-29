@@ -5,6 +5,11 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 const AddEmployee = (props) => {
   const [submitted, setSubmitted] = useState(false)
 
+  const todayDate = () => {
+    const date = new Date().toISOString() 
+    return date.slice(0, 10)
+  }
+
   return (
     <>
       {submitted ? (
@@ -32,7 +37,7 @@ const AddEmployee = (props) => {
               type="date"
               name="date"
               id="hireDate"
-              placeholder="date placeholder"
+              defaultValue={todayDate()}
               required
             />
           </FormGroup>

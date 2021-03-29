@@ -2,18 +2,16 @@ import propTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-// eslint-disable-next-line react/prop-types
 const EditEmployee = ({ employee, onSubmit }) => {
   const [firstname, setFirstname] = useState(employee.firstname)
   const [lastname, setLastname] = useState(employee.lastname)
-  const [email, setEmail] = useState(employee.email)
   const [telephone, setTelephone] = useState(employee.telephone)
   const [hireDate, setHireDate] = useState(employee.hireDate)
   const [checked, setChecked] = useState(employee.active)
 
   return (
     <Container>
-      <Form onSubmit={(e) => onSubmit(e, hireDate, checked)}>
+      <Form onSubmit={(e) => onSubmit(e, firstname, lastname, telephone, hireDate, checked)}>
         <h1>Edit Employee Data</h1>
         <Row form>
           <Col md={6}>
@@ -45,8 +43,8 @@ const EditEmployee = ({ employee, onSubmit }) => {
           <Input 
             type="email" 
             name="email" 
-            id="exampleEmail" 
-            value={`${email}`} onChange={() => setEmail(document.getElementById('email').value)} 
+            id="exampleEmail"
+            defaultValue={`${employee.email}`}
           />
         </FormGroup>
         <FormGroup>
@@ -85,7 +83,8 @@ const EditEmployee = ({ employee, onSubmit }) => {
 
 
 EditEmployee.propTypes = {
-  employee: propTypes.object.isRequired
+  employee: propTypes.object.isRequired,
+  onSubmit: propTypes.func.isRequired
 }
 
 export default EditEmployee

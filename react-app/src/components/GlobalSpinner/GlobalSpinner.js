@@ -1,19 +1,5 @@
 import React from 'react'
-// import {useIsLoadingContext} from '../../IsLoadingContext'
 import { Spinner as BaseSpinner } from 'reactstrap'
-
-// const GlobalSpinner = () => {
-//   const isLoading = useIsLoadingContext()
-  
-//   return isLoading ? (
-//     <div
-//       className="d-flex justify-content-center align-items-center"
-//       data-testid="spinner"
-//     >
-//       <BaseSpinner type="grow" color="primary" />
-//     </div>
-//   ) : null
-// }
 
 const GlobalSpinner = () => {
   

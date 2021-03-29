@@ -95,6 +95,10 @@ public class Person {
         return hireDate;
     }
 
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
+    }
+
     public boolean isActive() {
         return active;
     }

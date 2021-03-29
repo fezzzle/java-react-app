@@ -9,18 +9,19 @@ const EditEmployeeContainer = (props) => {
   const [employee, setEmployee] = useState()
   const setIsLoading = useIsLoadingActionsContext()
 
-  const onSubmit = (e, checked) => {
+  const onSubmit = (e, hireDate, checked) => {
     e.preventDefault()
-    const { firstname, lastname, email, telephone, hireDate } = e.target.elements
-    console.log(firstname.value, lastname.value, email.value, telephone.value, hireDate.value, checked)
-    
+    const { firstname, lastname, email, telephone } = e.target.elements
+    // console.log(firstname.value, lastname.value, email.value, telephone.value, hireDate, checked)
+    console.log('hireDate is: ', hireDate)
+
     apiDataService
       .update(employee.id, {
         firstname: firstname.value, 
         lastname: lastname.value, 
         email: email.value, 
         telephone: telephone.value, 
-        hireDate: hireDate.value, 
+        hireDate: hireDate, 
         active: checked
       })
       .then(res => console.log(res))

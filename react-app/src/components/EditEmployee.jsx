@@ -8,12 +8,12 @@ const EditEmployee = ({ employee, onSubmit }) => {
   const [lastname, setLastname] = useState(employee.lastname)
   const [email, setEmail] = useState(employee.email)
   const [telephone, setTelephone] = useState(employee.telephone)
-  const [date, setDate] = useState(employee.hireDate)
+  const [hireDate, setHireDate] = useState(employee.hireDate)
   const [checked, setChecked] = useState(employee.active)
-  
+
   return (
     <Container>
-      <Form onSubmit={(e) => onSubmit(e, checked)}>
+      <Form onSubmit={(e) => onSubmit(e, hireDate, checked)}>
         <h1>Edit Employee Data</h1>
         <Row form>
           <Col md={6}>
@@ -65,7 +65,7 @@ const EditEmployee = ({ employee, onSubmit }) => {
               type="date"
               name="date"
               id="hireDate"
-              value={`${date}`} onChange={() => setDate(document.getElementById('hireDate').value)}
+              value={`${hireDate}`} onChange={() => setHireDate(document.getElementById('hireDate').value)}
               required
             />
           </FormGroup>

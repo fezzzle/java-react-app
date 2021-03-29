@@ -22,7 +22,6 @@ export const useIsLoadingActionsContext = useContextFactory('IsLoadingActionsCon
 
 export const IsLoadingProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(false)
-  console.log('isLoading from context:', isLoading)
 
   return (
     <IsLoadingContext.Provider value={isLoading}>

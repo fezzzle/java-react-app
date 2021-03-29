@@ -82,6 +82,9 @@ public class PersonController {
       Person _person = personData.get();
       _person.setFirstname(person.getFirstname());
       _person.setLastname(person.getLastname());
+      _person.setEmail(person.getEmail());
+      _person.setTelephone(person.getTelephone());
+      _person.setHireDate(person.getHireDate());
       _person.setPersonStatus(person.isActive());
       return new ResponseEntity<>(tutorialprojectRepository.save(_person), HttpStatus.OK);
     } else {

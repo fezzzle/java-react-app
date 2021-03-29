@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { ListGroup, ListGroupItem, UncontrolledCollapse, Button, CardBody, Card, Container, Row, Col, NavLink  } from 'reactstrap'
@@ -101,8 +99,7 @@ const EmployeeList = ({ employees, deleteRecords }) => {
 }
 
 EmployeeList.propTypes = {
-  // employees: PropTypes.array.isRequired,
-  // employees: PropTypes.arrayOf(PropTypes.object).isRequired,
+  employees: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteRecords: PropTypes.func.isRequired
 }
 

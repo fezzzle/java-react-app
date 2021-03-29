@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { EditEmployee } from '../components/'
 import apiDataService from '../services/api-service'
 import { useIsLoadingActionsContext } from '../IsLoadingContext'
-import GlobalSpinner from '../components/GlobalSpinner/GlobalSpinner'
+import GlobalSpinner from '../components/GlobalSpinner'
 
 const EditEmployeeContainer = (props) => {
   const [employee, setEmployee] = useState()
@@ -29,7 +29,7 @@ const EditEmployeeContainer = (props) => {
 
   useEffect(() => {
     setIsLoading(true)
-    // Just for testing if spinner works
+    // setTimeout is just for testing if spinner works
     // setTimeout(() => {
     apiDataService
       .get(props.match.params.id)

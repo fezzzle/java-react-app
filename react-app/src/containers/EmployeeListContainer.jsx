@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { EmployeeList } from '../components'
 import apiDataService from '../services/api-service'
 import { useIsLoadingActionsContext } from '../IsLoadingContext'
-import GlobalSpinner from '../components/GlobalSpinner/GlobalSpinner'
+import GlobalSpinner from '../components/GlobalSpinner'
 
 const EmployeeListContainer = () => {
   const [employees, setEmployees] = useState()
@@ -17,7 +17,7 @@ const EmployeeListContainer = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    // Just for testing if spinner works
+    // setTimeout is just for testing if spinner works
     // setTimeout(() => {
     apiDataService
       .getAll()
@@ -29,7 +29,12 @@ const EmployeeListContainer = () => {
 
   return (
     <>
-      {employees ? (<EmployeeList employees={employees} deleteRecords={deleteRecords}/>) : (<GlobalSpinner />)}
+      {
+        employees 
+          ? 
+          (<EmployeeList employees={employees} deleteRecords={deleteRecords}/>) 
+          : 
+          (<GlobalSpinner />)}
     </>
   )
 }

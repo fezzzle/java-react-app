@@ -75,7 +75,7 @@ const EditEmployee = ({ employee, onSubmit }) => {
           employed?
           </Label>
         </FormGroup>
-        <Button>Save Employ Info</Button>
+        <Button>Save Employee Info</Button>
       </Form>
     </Container>
   )

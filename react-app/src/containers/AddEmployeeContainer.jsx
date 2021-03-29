@@ -4,7 +4,6 @@ import apiDataService from '../services/api-service'
 
 
 const AddEmployeeContainer = () => {
-
   const onSubmit = (e) => {
     e.preventDefault()
     const { firstname, lastname, email, telephone, hireDate} = e.target.elements

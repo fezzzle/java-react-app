@@ -9,13 +9,33 @@ const EditEmployeeContainer = (props) => {
   const [employee, setEmployee] = useState()
   const setIsLoading = useIsLoadingActionsContext()
 
+  const onSubmit = (e, checked) => {
+    e.preventDefault()
+    const { firstname, lastname, email, telephone, hireDate } = e.target.elements
+    console.log(firstname.value, lastname.value, email.value, telephone.value, hireDate.value, checked)
+    
+    apiDataService
+      .update(employee.id, {
+        firstname: firstname.value, 
+        lastname: lastname.value, 
+        email: email.value, 
+        telephone: telephone.value, 
+        hireDate: hireDate.value, 
+        active: checked
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
+
 
   useEffect(() => {
     setIsLoading(true)
     setTimeout(() => {
       apiDataService
         .get(props.match.params.id)
-        .then(res => setEmployee(res.data))
+        .then(res => {
+          console.log(res.data)
+          setEmployee(res.data)})
         .catch(err => console.log(err))
     }, 1000)
     setIsLoading(false)
@@ -23,7 +43,7 @@ const EditEmployeeContainer = (props) => {
 
   return (
     <>
-      {employee ? (<EditEmployee employee={employee}/>) : (<GlobalSpinner />)}
+      {employee ? (<EditEmployee employee={employee} onSubmit={onSubmit}/>) : (<GlobalSpinner />)}
     </>
   )
 }

@@ -10,6 +10,7 @@ package com.reactproject.tutorialproject.model;
 import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "people")
@@ -31,7 +32,9 @@ public class Person {
     @Column(name = "telephone")
     private String telephone;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    // @DateTimeFormat(pattern = "yyyy-MM-dd")
+    // @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "hireDate")
     private Date hireDate;
 
@@ -99,9 +102,6 @@ public class Person {
     public void setPersonStatus(boolean isActive) {
         this.active = isActive;
     }
-    // TODO:
-    // ADD HIREDATE FUNCTIONS
-
 
     // @Override
     // public String toString() {

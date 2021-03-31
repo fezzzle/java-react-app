@@ -9,18 +9,25 @@ const useContextFactory = (name, context) => {
   return () => {
     const ctx = useContext(context)
     if (ctx === undefined) {
-      throw new Error(`use${name}Context must be used withing a ${name}ContextProvider.`)
+      throw new Error(
+        `use${name}Context must be used withing a ${name}ContextProvider.`,
+      )
     }
     return ctx
   }
 }
 /* eslint-enable */
 
-export const useIsLoadingContext = useContextFactory('IsLoadingContext', IsLoadingContext)
-export const useIsLoadingActionsContext = useContextFactory('IsLoadingActionsContext', IsLoadingActionsContext)
+export const useIsLoadingContext = useContextFactory(
+  'IsLoadingContext',
+  IsLoadingContext,
+)
+export const useIsLoadingActionsContext = useContextFactory(
+  'IsLoadingActionsContext',
+  IsLoadingActionsContext,
+)
 
-
-export const IsLoadingProvider = ({children}) => {
+export const IsLoadingProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
@@ -32,7 +39,6 @@ export const IsLoadingProvider = ({children}) => {
   )
 }
 
-
 IsLoadingProvider.propTypes = {
-  children: propTypes.object.isRequired
+  children: propTypes.object.isRequired,
 }

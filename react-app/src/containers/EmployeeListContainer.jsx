@@ -7,37 +7,44 @@ import GlobalSpinner from '../components/GlobalSpinner'
 const EmployeeListContainer = () => {
   const [employees, setEmployees] = useState()
   const setIsLoading = useIsLoadingActionsContext()
-  
+
   const deleteRecords = () => {
-    apiDataService
-      .deleteAll()
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    const confirmAction = confirm(
+      'Do you really wish to delete all the records?',
+    )
+    if (!confirmAction) {
+      alert('Not deleted')
+    } else {
+      apiDataService
+        .deleteAll()
+        .then(res => {
+          window.location.reload()
+          console.log(res)
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   useEffect(() => {
     setIsLoading(true)
-    // setTimeout is just for testing if spinner works
-    // setTimeout(() => {
     apiDataService
       .getAll()
       .then(res => setEmployees(res.data))
-      .catch(err => {console.log(err)})
-    // }, 1000)
+      .catch(err => {
+        console.log(err)
+      })
     setIsLoading(false)
   }, [setIsLoading])
 
   return (
     <>
-      {
-        employees 
-          ? 
-          (<EmployeeList employees={employees} deleteRecords={deleteRecords}/>) 
-          : 
-          (<GlobalSpinner />)}
+      {employees ? (
+        <EmployeeList employees={employees} deleteRecords={deleteRecords} />
+      ) : (
+        <GlobalSpinner />
+      )}
     </>
   )
 }
-
 
 export default EmployeeListContainer

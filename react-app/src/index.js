@@ -12,5 +12,5 @@ ReactDOM.render(
       <App />
     </IsLoadingProvider>
   </Router>,
-  document.getElementById('app')
+  document.getElementById('app'),
 )

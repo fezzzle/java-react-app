@@ -5,7 +5,7 @@ import apiDataService from '../services/api-service'
 import { useIsLoadingActionsContext } from '../IsLoadingContext'
 import GlobalSpinner from '../components/GlobalSpinner'
 
-const EditEmployeeContainer = (props) => {
+const EditEmployeeContainer = props => {
   const [employee, setEmployee] = useState()
   const setIsLoading = useIsLoadingActionsContext()
 
@@ -15,35 +15,35 @@ const EditEmployeeContainer = (props) => {
 
     apiDataService
       .update(employee.id, {
-        firstname: firstname, 
-        lastname: lastname, 
-        email: email.value, 
-        telephone: telephone, 
-        hireDate: hireDate, 
-        active: checked
+        firstname: firstname,
+        lastname: lastname,
+        email: email.value,
+        telephone: telephone,
+        hireDate: hireDate,
+        active: checked,
       })
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }
 
-
   useEffect(() => {
     setIsLoading(true)
-    // setTimeout is just for testing if spinner works
-    // setTimeout(() => {
     apiDataService
       .get(props.match.params.id)
       .then(res => {
-        console.log(res.data)
-        setEmployee(res.data)})
+        setEmployee(res.data)
+      })
       .catch(err => console.log(err))
-    // }, 1000)
     setIsLoading(false)
   }, [setIsLoading])
 
   return (
     <>
-      {employee ? (<EditEmployee employee={employee} onSubmit={onSubmit}/>) : (<GlobalSpinner />)}
+      {employee ? (
+        <EditEmployee employee={employee} onSubmit={onSubmit} />
+      ) : (
+        <GlobalSpinner />
+      )}
     </>
   )
 }
@@ -52,8 +52,8 @@ EditEmployeeContainer.propTypes = {
   match: propTypes.shape({
     params: propTypes.shape({
       id: propTypes.string,
-    })
-  }).isRequired
+    }),
+  }).isRequired,
 }
 
 export default EditEmployeeContainer

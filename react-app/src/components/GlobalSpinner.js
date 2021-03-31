@@ -2,7 +2,6 @@ import React from 'react'
 import { Spinner as BaseSpinner } from 'reactstrap'
 
 const GlobalSpinner = () => {
-  
   return (
     <div
       className="d-flex justify-content-center align-items-center"

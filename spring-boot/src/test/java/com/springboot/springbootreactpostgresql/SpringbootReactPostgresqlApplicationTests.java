@@ -1,10 +1,10 @@
-package com.reactproject.tutorialproject;
+package com.springboot.springbootreactpostgresql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TutorialprojectApplicationTests {
+class SpringbootReactPostgresqlApplicationTests {
 
 	@Test
 	void contextLoads() {

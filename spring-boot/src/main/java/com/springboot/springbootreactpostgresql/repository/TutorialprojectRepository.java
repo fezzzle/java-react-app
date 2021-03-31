@@ -1,6 +1,6 @@
-package com.reactproject.tutorialproject.repository;
+package com.springboot.springbootreactpostgresql.repository;
 
-import com.reactproject.tutorialproject.model.Person;
+import com.springboot.springbootreactpostgresql.model.Person;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.reactproject.tutorialproject.controller;
+package com.springboot.springbootreactpostgresql.controller;
 
-import com.reactproject.tutorialproject.model.Person;
-import com.reactproject.tutorialproject.repository.TutorialprojectRepository;
+import com.springboot.springbootreactpostgresql.model.Person;
+import com.springboot.springbootreactpostgresql.repository.TutorialprojectRepository;
 
 import java.util.ArrayList;
 import java.util.List;

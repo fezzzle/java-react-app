@@ -5,12 +5,11 @@
 // Date hireDate,
 // boolean active
 
-package com.reactproject.tutorialproject.model;
+package com.springboot.springbootreactpostgresql.model;
 
-import javax.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "people")

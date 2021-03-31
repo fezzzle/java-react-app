@@ -8,13 +8,13 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.reactproject</groupId>
-	<artifactId>tutorialproject</artifactId>
+	<groupId>com.springboot</groupId>
+	<artifactId>springboot-react-postgresql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tutorialproject</name>
+	<name>springboot-react-postgresql</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
